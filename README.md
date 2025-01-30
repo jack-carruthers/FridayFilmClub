@@ -25,7 +25,8 @@
   IF THIS DOES NOT WORK THEN 
   run this in terminal instead
   
-  "
+  ```bash
+   "
     dotnet add package Microsoft.AspNetCore.Authentication.Tools
     dotnet add package Microsoft.AspNetCore.Authentication
     dotnet add package Microsoft.Identity.Client

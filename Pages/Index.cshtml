@@ -1,0 +1,51 @@
+﻿@page
+@model FridayFilmClub.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="home-header">
+    <div class="header-content">
+        <h1 class="movie-title">Welcome to Friday Film Club</h1>
+        <a href="/Register" class="btn-register">Register</a>
+    </div>
+</div>
+
+
+<div class="container mt-4">
+    <h2 class="text-center">Featured Films</h2>
+    <div id="filmCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.FeaturedFilms.Count; i += 4)
+            {
+                <div class="carousel-item @(i == 0 ? "active" : "")">
+                    <div class="row text-center">
+                        @for (int j = i; j < i + 4 && j < Model.FeaturedFilms.Count; j++)
+                        {
+                            var movie = Model.FeaturedFilms[j];
+                            <div class="col-md-3">
+                                <div class="card mb-4">
+                                    <img src="@movie.Poster" class="card-img-top" alt="@movie.Title" style="height: 300px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@movie.Title</h5>
+                                        <p class="card-text">@movie.Genre</p>
+                                        <a href="@Url.Page("/MovieDetails", new { id = movie.ImdbID })" class="btn btn-primary">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#filmCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        
+        <button class="carousel-control-next" type="button" data-bs-target="#filmCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>

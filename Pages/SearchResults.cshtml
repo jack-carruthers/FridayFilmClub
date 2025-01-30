@@ -1,0 +1,31 @@
+@page
+@model SearchResultsModel
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<div class="container">
+    <h2>Search Results</h2>
+    @if (Model.Movies != null && Model.Movies.Any())
+    {
+        <div class="row">
+            @foreach (var movie in Model.Movies)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="@movie.Poster" class="card-img-top" alt="@movie.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@movie.Title</h5>
+                            <p class="card-text">Year: @movie.Year</p>
+                            <a href="@Url.Page("/MovieDetails", new { id = movie.ImdbID })" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No results found.</p>
+    }
+</div>

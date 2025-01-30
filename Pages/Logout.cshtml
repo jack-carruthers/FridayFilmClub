@@ -1,0 +1,8 @@
+@page
+@functions {
+    public IActionResult OnPost()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToPage("/Index"); // Redirect to the home page after logout
+    }
+}

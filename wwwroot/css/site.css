@@ -1,0 +1,772 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.rounded-image {
+  width: 50px;  /* Adjust size as needed */
+  height: 50px; /* Ensure it's square for a perfect circle */
+  border-radius: 50%; /* Makes the image round */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  margin-right: 20px;
+}
+
+.carousel-control-prev {
+  left: -110px; /* Adjust this value to move the button further left */
+}
+
+.carousel-control-next {
+  right: -110px; /* Adjust this value to move the button further right */
+}
+
+/* Style for the carousel control buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px; /* Width of the button */
+    height: 95%; /* Full height of the carousel */
+    background-color: rgb(163, 163, 163); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none; /* Remove any default borders */
+    opacity: 1; /* Ensure buttons are always visible */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Centered arrow styles */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: inline-block;
+    width: 15px; /* Arrow width */
+    height: 15px; /* Arrow height */
+    border: solid white; /* Arrow color */
+    border-width: 0 3px 3px 0; /* Make the arrow using borders */
+    background: none; /* Remove the white background issue */
+    transform: rotate(135deg); /* Default rotation for left arrow */
+}
+
+.carousel-control-next-icon {
+    transform: rotate(-45deg); /* Adjust rotation for right arrow */
+}
+
+/* Hover effect for buttons */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 576px) {
+  .carousel-control-prev {
+      left: -30px;
+  }
+
+  .carousel-control-next {
+      right: -30px;
+  }
+}
+
+/* Ensure consistent row and card alignment */
+.row.text-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch; /* Stretch all cards evenly across the row */
+}
+
+/* Enforce a fixed height for all cards */
+/* Enforce a fixed height for all cards */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 450px; /* Increased to ensure space for content and button */
+  margin-bottom: 4rem; /* Add spacing between rows of cards */
+}
+
+.container.mt-4 {
+  padding-top: 50px;
+  margin-bottom: 80px; /* Adjust the value as needed to give enough space */
+}
+
+/* Consistent image height */
+.card-img-top {
+  height: 250px; /* Fixed height for images */
+  object-fit: cover; /* Prevent distortion by cropping images */
+}
+
+/* Make card body fill the remaining space */
+.card-body {
+  flex-grow: 1; /* Allow the card body to grow evenly */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out content within the card */
+  padding: 0.5rem 1rem 1rem; /* Ensure space for the button */
+
+}
+
+/* Ensure card titles have a fixed height to avoid layout shifts */
+.card-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.2; /* Consistent line spacing */
+  height: 2.6rem; /* Adjusted to fully fit 2 lines of text */
+  overflow: hidden; /* Truncate extra text if it exceeds 2 lines */
+  text-overflow: ellipsis; /* Add ellipsis if truncated */
+  white-space: normal; /* Allow wrapping for multi-line text */
+}
+/* Ensure buttons are properly aligned and stay inside the card */
+.card-text {
+  font-size: 0.9rem;
+  color: #666; /* Optional: Lighter text for genre */
+}
+
+.btn-primary {
+  margin-top: auto; /* Push the button to the bottom if there's extra space */
+  width: 100%; /* Make the button take up the full width of the card */
+  text-align: center; /* Center the button text */
+}
+
+/* Optional carousel styles if directional arrows overlap */
+.carousel-item .row {
+  display: flex;
+  align-items: stretch; /* Align cards to stretch to the same height */
+}
+
+.navbar-custom {
+  background-color: #242424; /* Replace this with your preferred color */
+  color: #fff; /* Ensure the text color contrasts with the background */
+}
+
+
+.navbar-transparent {
+  background-color: transparent !important;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Ensure navbar text is visible and bold */
+.navbar-transparent .nav-link,
+.navbar-transparent .navbar-brand {
+  color: rgb(255, 255, 255) !important;
+  font-weight: bold; /* Make text bold */
+}
+
+.navbar-nav .nav-item {
+  margin-right: 10px; /* Adjust this value as needed */
+}
+
+.navbar-nav .nav-link {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.navbar .navbar-brand {
+    
+    margin-left: 60px; 
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between; /* Ensure items are spaced properly */
+}
+
+
+
+.navbar-logo{
+  width: 50px;
+  height: 50px;
+  border-radius: 10%;
+  object-fit: cover;
+  margin-right: 0px;
+  
+}
+.home-header {
+  background-image: url('/images/movieHome1.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: top; /* Focus on the top of the image */
+  min-height: 100vh;  
+  width: 100%; /* Full viewport width */
+  display: flex;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent overflowing content */
+  position: relative; /* Ensure fade effect is positioned correctly */
+}
+
+.header-content {
+  text-align: center; /* Center the text and button */
+  margin-top: 40vh; /* Adds some vertical space from the top of the screen */
+}
+
+.movie-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px; /* Add margin below title */
+}
+
+.btn-register {
+  display: inline-block;
+  margin-top: 20px; /* Adds space between the title and button */
+  width: 150px;
+  background-color: #f8c439;
+  color: rgb(255, 255, 255);
+  text-decoration: none; /* Removes the underline from the text */
+  text-align: center; /* Ensures text is centered inside the button */
+  padding: 10px 0; /* Adds padding to make the button look more like a button */
+  border-radius: 5px; /* Optional: adds rounded corners to the button */
+}
+
+.btn-register:hover {
+  background-color: #facf58;
+  color: black;
+}
+
+/* Fade effect that transitions to a white background */
+.home-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%; /* Adjust the height of the fade effect */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(177, 177, 177, 1) 100%); /* Fade from transparent to white */
+  pointer-events: none; /* Prevent blocking interactions with underlying elements */
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Ensure it spans the entire width */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+
+body {
+  background-color: #b1b1b1; /* Light grey background */
+}
+
+.movie-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px; /* Add margin below title */
+}
+
+.delete-btn {
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+  transform: scale(1.05);
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+.delete-btn i {
+  margin-right: 8px;
+}
+
+/* Ensure navbar is not affected by flex layout */
+
+
+/* Center the Login-Card without affecting the navbar */
+
+
+/* Centering the Login Card on the Page */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* Full height minus the navbar height */
+  margin-top: 60px; /* Optional: add space for the navbar */
+}
+
+.Login-Card {
+  margin-left: 20%;
+  display: flex;
+  width: 800px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: #666;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Left and Right sections inside the Login Card */
+.left-side, .right-side {
+  flex: 1;
+  padding: 20px;
+  color: white;
+}
+
+/* Right side (Lorem Ipsum) */
+.right-side {
+  background-color: #444;
+  color: white;
+  font-style: italic;
+}
+
+/* Additional Form Styles */
+.left-side form {
+  padding-top: 50px;
+  display: flex;
+  color: rgb(0, 0, 0);
+  flex-direction: column;
+}
+
+.left-side input,
+.left-side button {
+  margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+}
+
+.left-side button {
+  background-color: #f8c439;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Space above the button */
+  color: white;
+}
+
+.left-side button:hover {
+  background-color: #facf58;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .Login-Card {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .left-side, .right-side {
+      color: white;
+      flex: none;
+      width: 100%;
+      text-align: center;
+  }
+}
+
+.right-side h3 {
+  margin-bottom: 15px; /* Add space between header and text */
+}
+
+.right-side p {
+  margin-top: 10px; /* Optional: Add space between the paragraph and other elements */
+}
+
+
+/* Center the register card on the page */
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* Full height minus the navbar height */
+  margin-top: 10px; /* Optional: add space for the navbar */
+}
+
+/* Styling the register card */
+.register-card {
+  display: flex;
+  flex-direction: column; /* Remove the split layout */
+  width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #666;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+/* Form and input styling for register card */
+.register-card form {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px; /* Add space at the top */
+}
+
+.register-card input,
+.register-card button {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+
+
+.register-card button {
+  background-color: #f8c439;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-card button:hover {
+  background-color: #facf58;
+}
+.Rating-sys{
+  margin-bottom: 50px;
+}
+.register-card p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.register-card a {
+  color: #f8c439;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .register-card {
+    width: 100%;
+  }
+}
+
+.movie-info-bar {
+  border: 1px solid #ddd; /* Border around the box */
+  background-color: #f9f9f9;
+  border-radius: 8px; /* Rounded corners */
+  
+  margin: 20px auto;
+  padding: 20px 0; /* Padding to create space inside the box */
+  margin-top: 20px; /* Space between the bar and other content */
+  width: 900px; /* Set the width of the box */
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+}
+
+.movie-info-bar .container {
+  width: 100%; /* Container takes full width of the movie-info-bar */
+  padding: 0; /* Remove any additional padding */
+}
+
+.movie-info-bar h1 {
+  margin-left: 10px;
+  text-align: left; /* Align the movie title to the left */
+  font-size: 2em; /* Adjust size of the title */
+  margin-bottom: 10px; /* Space between title and movie info */
+}
+
+.movie-info .movie-info-item {
+  margin-left: 10px;
+  display: inline-block; /* Keep the items in a row */
+  margin-right: 30px; /* Space between the items */
+  font-size: 16px; /* Adjust text size */
+}
+
+.movie-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 8px; /* Adds spacing below the title */
+}
+
+.movie-details {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+
+.movie-info-item {
+  font-weight: bold;
+  color: #333;
+}
+
+.movie-info-item strong {
+  color: #000; /* Make the labels stand out */
+}
+
+/* Box for Movie Poster, Plot, and Credits */
+.movie-details-box {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to the next line if necessary */
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd; /* Border around the box */
+  background-color: #f9f9f9;
+  border-radius: 8px; /* Rounded corners */
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.movie-poster {
+  flex: 1;
+  padding-right: 20px; /* Space between the poster and plot */
+}
+
+.movie-plot {
+  flex: 2;
+  font-size: 18px; /* Increase font size of the plot */
+  text-align: center; /* Center the text horizontally */
+  margin-top: 80px; /* Adds space above the plot text */
+  line-height: 1.6; /* Make the plot more readable with more space between lines */
+}
+
+
+
+/* Movie Credits: Director, Writer, Actors */
+.movie-credits {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 100%; /* Make sure credits section takes full width */
+}
+
+.credit-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc; /* Line between each credit */
+  font-size: 16px;
+}
+
+.credit-item:last-child {
+  border-bottom: none; /* Remove the border for the last item */
+}
+
+/* Ensure overall layout doesn't overlap */
+.main-content {
+  padding-top: 20px;
+  padding-bottom: 100px; /* Adjust for footer */
+  margin-bottom: 40px;
+}
+
+.user-ratings-box {
+  margin-top: 30px;
+  padding: 20px;
+  padding-bottom: 30px; /* Add padding at the bottom of the box */
+  border: 1px solid #ddd; /* Border around the box */
+  background-color: #f9f9f9;
+  border-radius: 8px; /* Rounded corners */
+  max-width: 900px;
+  margin: 20px auto;
+  margin-bottom: 60px;
+  
+}
+
+/* Title for User Ratings */
+.user-ratings-box h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Styling for Rating Information (Average Rating, Rating Count) */
+.user-ratings-box p {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Styling for the Rating Form */
+.user-ratings-box select,
+.user-ratings-box button {
+  font-size: 16px;
+  padding: 8px;
+  margin-top: 10px;
+}
+
+/* Disable form elements when user is not logged in */
+.user-ratings-box select:disabled,
+.user-ratings-box button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.dark-mode body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.chat-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60px;
+}
+
+.dark-mode .chat-page-container {
+  background: #1f1f1f;
+}
+
+/* Chat Container */
+.chat-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  height: 400px;
+  width: 100%;
+  overflow-y: auto;
+  background: #fafafa;
+}
+
+.dark-mode .chat-container {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.message {
+  margin-bottom: 12px;
+}
+
+.message p {
+  margin: 0;
+}
+
+
+
+.message p:last-child {
+  background: #f0f0f0;
+  border-radius: 6px;
+  padding: 8px;
+  margin-top: 6px;
+}
+
+.dark-mode .message p:last-child {
+  background: #333;
+}
+
+/* Buttons */
+button {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-ban {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn-ban:hover {
+  background-color: #e67e22;
+}
+
+.btn-chat {
+  background-color: #f8c439;
+  color: white;
+}
+
+.btn-chat:hover {
+  background-color: #edaf03;
+}
+
+.btn-scroll{
+  background-color: #f8c439;
+  color: white;
+  right: 0;
+}
+
+button#scroll-to-bottom {
+  background-color: #f8c439;
+  color: white;
+  display: none;
+  right: 0;
+}
+
+button#scroll-to-bottom:hover {
+  background-color: #edaf03;
+}
+
+/* Form Styles */
+textarea {
+  width: 100%;
+  font-size: 14px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+}
+
+
+
+.dark-mode textarea {
+  background: #1f1f1f;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+
+
+
+
+form#chat-form .flex {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+  
+}
+
+/* Scroll button when visible */
+#scroll-to-bottom.hidden {
+  display: none;
+
+}
+
+#scroll-to-bottom:not(.hidden) {
+  display: block;
+}

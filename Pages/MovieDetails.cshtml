@@ -1,0 +1,66 @@
+@page "{id}"
+@using FridayFilmClub.Models
+@model FridayFilmClub.Pages.MovieDetailsModel
+
+@{
+    ViewData["Title"] = Model.Movie?.Title ?? "Movie Details";
+}
+
+<!-- Movie Info Bar Below Navbar -->
+<div class="movie-info-bar">
+    <div class="container">
+        <h1>@Model.Movie?.Title</h1>
+        <div class="movie-info">
+            <span class="movie-info-item"><strong>Title:</strong> @Model.Movie?.Title</span>
+            <span class="movie-info-item"><strong>Year:</strong> @Model.Movie?.Year</span>
+            <span class="movie-info-item"><strong>Rating:</strong> @Model.Movie?.Rated</span>
+        </div>
+    </div>
+</div>
+<div class="movie-details-box">
+    <!-- Movie Poster -->
+    <div class="movie-poster">
+        <img src="@Model.Movie.Poster" alt="Movie Poster" style="max-width: 200px; max-height: 300px;">
+    </div>
+
+    <!-- Movie Plot -->
+    <div class="movie-plot">
+        <p><strong>Plot:</strong> @Model.Movie.Plot</p>
+    </div>
+
+    <!-- Movie Credits: Director, Writer, Actors -->
+    <div class="movie-credits">
+        <div class="credit-item">
+            <strong>Director(s):</strong> @Model.Movie.Director
+        </div>
+        <div class="credit-item">
+            <strong>Writer(s):</strong> @Model.Movie.Writer
+        </div>
+        <div class="credit-item">
+            <strong>Actors:</strong> @Model.Movie.Actors
+        </div>
+    </div>
+</div>
+
+<div class="user-ratings-box">
+    <h2>User Ratings</h2>
+    <p>Average Rating: @Model.Movie.FormattedAverageRating</p>
+    <p>Number of Ratings: @Model.Movie.RatingCount</p>
+
+    @if (!Model.IsUserLoggedIn)
+    {
+        <p style="color:red;">Only logged-in users can rate movies.</p>
+    }
+
+    <form method="post">
+        <label for="rating">Rate this movie:</label>
+        <select id="rating" name="rating" @(Model.IsUserLoggedIn ? "" : "disabled")>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+        </select>
+        <button type="submit" @(Model.IsUserLoggedIn ? "" : "disabled")>Submit Rating</button>
+    </form>
+</div>

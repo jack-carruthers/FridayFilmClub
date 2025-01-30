@@ -1,0 +1,114 @@
+@page
+@model FridayFilmClub.Pages.ChatModel
+@{
+    ViewData["Title"] = "Chat Room";
+}
+
+<div class="chat-page-container mx-auto max-w-screen-md p-4 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+    <h2 class="text-2xl font-bold mb-4 text-center">Chat Room</h2>
+
+    <!-- Chat Container -->
+    <div id="chat-container" class="chat-container border border-gray-300 dark:border-gray-700 rounded-lg p-4 h-96 overflow-y-auto bg-gray-50 dark:bg-gray-800 shadow-md">
+        @foreach (var message in Model.ChatMessages)
+        {
+            <div id="message-@message.MessageID" class="message mb-3">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                    <strong class="text-blue-600 dark:text-blue-400">@message.Username</strong> <span class="text-gray-500 dark:text-gray-500">(@message.Timestamp.ToString("g"))</span>
+                </p>
+                <p class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg shadow-sm">@message.Message</p>
+
+                @if (HttpContext.Session.GetInt32("IsAdmin") == 1)
+                {
+                    <div class="mt-2 flex flex-row gap-2 items-center">
+                        <form method="post" asp-page-handler="DeleteMessage" asp-route-messageId="@message.MessageID">
+                            <button type="submit" class="btn-delete px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600">Delete</button>
+                        </form>
+
+                        <form method="post" asp-page-handler="BanUser" asp-route-username="@message.Username">
+                            <button type="submit" class="btn-ban px-3 py-1 rounded bg-yellow-500 text-white hover:bg-yellow-600">Ban</button>
+                        </form>
+                    </div>
+                }
+
+            </div>
+        }
+    </div>
+
+    <!-- Message Form -->
+    <form method="post" id="chat-form" class="mt-4 flex items-center gap-2">
+        <textarea id="chat-message" name="chatMessage" rows="3" class="form-control w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring focus:border-blue-300 dark:focus:border-blue-600" placeholder="Type your message..." required></textarea>
+        <div class="flex flex-col gap-4">
+            <button type="submit" class="btn-chat">Send</button>
+            <button type="button" id="scroll-to-bottom" class="btn-scroll">Scroll</button>
+        </div>
+    </form>
+
+    <!-- Admin Controls -->
+    @if (HttpContext.Session.GetInt32("IsAdmin") == 1)
+    {
+        <form method="post" id="delete-messages-form" class="mt-4">
+            <button type="submit" asp-page-handler="DeleteAll" style="background-color: red;"class="w-full py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600">Delete All Messages</button>
+        </form>
+    }
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .chat-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .btn-delete:hover, .btn-ban:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s;
+        }
+        #scroll-to-bottom.hidden {
+            display: none;
+        }
+        #scroll-to-bottom:not(.hidden) {
+            display: block;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
+
+        function scrollToBottom() {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function toggleScrollButton() {
+            const isScrolledToBottom = chatContainer.scrollTop >= chatContainer.scrollHeight - chatContainer.clientHeight - 50;
+            if (!isScrolledToBottom) {
+                scrollToBottomBtn.classList.remove('hidden');
+            } else {
+                scrollToBottomBtn.classList.add('hidden');
+            }
+        }
+
+        // Automatically scroll to bottom when a new message is added unless the user has scrolled up
+        const observer = new MutationObserver(() => {
+            const isScrolledToBottom = chatContainer.scrollTop >= chatContainer.scrollHeight - chatContainer.clientHeight - 50;
+            if (isScrolledToBottom) {
+                scrollToBottom();
+            }
+        });
+
+        observer.observe(chatContainer, { childList: true, subtree: true });
+
+        // Add event listener for the scroll-to-bottom button
+        scrollToBottomBtn.addEventListener('click', () => {
+            scrollToBottom();
+        });
+
+        // Track user scrolling
+        chatContainer.addEventListener('scroll', toggleScrollButton);
+
+        // Scroll to bottom on initial load
+        scrollToBottom();
+    </script>
+}

@@ -1,0 +1,8 @@
+@model List<FridayFilmClub.Pages.ChatMessage>
+
+@foreach (var message in Model)
+{
+    <p>
+        <strong>@message.Username</strong> (@message.Timestamp.ToString("g")): @message.Message
+    </p>
+}

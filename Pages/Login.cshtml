@@ -1,0 +1,44 @@
+@page
+@model FridayFilmClub.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+<!-- Login Card -->
+<div class="Login-Card">
+    <div class="left-side">
+        <h2 style="text-align: center;">Sign</h2>
+
+        <form method="post">
+            <label for="username" style="color:white;">Username</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password" style="color: white">Password</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+        @if (Model.LoginFailed)
+        {
+            <p style="color:red;">Invalid username or password.</p>
+        }
+
+        <p>
+            Don't have an account? 
+            <a href="/Register">Sign up</a>
+        </p>
+    </div>
+
+    <div class="right-side">
+        <h3>Why Create an Account?</h3>
+
+        <p>
+            By signing up for an account, you unlock a range of exciting features that will enhance your experience at Friday Film Club. As a member, you’ll be able to rate films you’ve watched, helping others discover top-rated content and share your opinions on the latest releases. Your ratings will contribute to the club’s weekly top-rated films, showcasing the community’s favorites.<br><br>Additionally, your account gives you access to our chat room and forums, where you can engage in vibrant discussions about the films you love. Whether it’s debating plot twists, analyzing characters, or sharing recommendations, you’ll be part of a passionate community of fellow film lovers.<br>
+
+        </p>
+    </div>
+</div>
